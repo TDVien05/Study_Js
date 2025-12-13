@@ -117,6 +117,10 @@
  * 'Đoàn \'Viên' --> Output: Đoàn 'Viên
  * "Đoàn 'Viên" --> Output: Đoàn 'Viên
  * Tương tự với các trường hợp ngược lại 
+ * Có 2 loại string trong JavaScript:
+ *  + Primite: let name = "Doan Vien";
+ *  + Object: let x = new String("Doan Vien");
+ * Thông thường không hay dùng String object vì nhiều nguyên do như: tốn bộ nhớ, exception, ...
  */
 /**
  * ---------NUMBERS---------
@@ -165,3 +169,7 @@
 // 2. Dữ liệu phức tạp -- Complex data
 // 2.1. Function
 // 2.2. Object
+
+const test = new WeakSet([{fName: 'Vien', age: 18}, 15]);
+
+console.log(test);

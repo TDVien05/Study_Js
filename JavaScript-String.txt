@@ -1,0 +1,23 @@
+- Dùng để lưu trữ chuỗi
+- Có 2 kiểu String:
+    + Primitive: let name = `Doan Vien`;
+    + Object: let name = new String(`Doan Vien`);
+--> Thông thường ít khi dùng String kiểu Object bởi vì các nhược điểm như: tốn bộ nhớ (do là object tốn thêm bộ nhớ heap), có thể gây ra các exception, ... 
+
+1. String templates
+- Template Strings hay dùng back-ticks (``) để định nghĩa ra 1 string
+    + Ví dụ: let text = `Hello world!`;
+- Template String cho phép single và double quotes ('' và "") bên trong 1 chuỗi.
+    + Ví dụ: let text  = `He's often called "Johnny"`;
+- Template String allow multiline strings: 
+    + Ví dụ: let text = `The quick brown fox jumps over the lazy dog`;
+- Interpolation: cho phép dùng biến trong String (${})
+    + Ví dụ: 
+        let firstName = `Doan`;
+        let lastName = `Vien`;
+        let text = `Welcome ${firstName}, ${lastName}`
+--> Cũng có thể sử dụng cho biẻu thức
+    + Ví dụ:
+        let price = 10;
+        let VAT = 0.25;
+        let total = `Total: ${(price * (1 + VAT)).toFixed(2)`};

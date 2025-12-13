@@ -1,0 +1,116 @@
+1. Function là gì?
+- Function là những khối xây dựng cơ bản trong tất cả ngôn ngữ lập trình
+- Function là các khối mã có thể tái sử dụng, được thiết kế để thực hiện 1 nhiệm vụ cụ thể
+- Function sẽ được thực thi khi chúng được gọi hoặc triệu gọi (call or invoke)
+
+2. Syntax
+- Cú pháp:
+    -> function name(p1, p2, ...) {
+        // code to be excuted 
+    }
+- Function đặt tên theo tiêu chuẩn của biến 
+- Dấu `()` là dùng để gọi hàm
+    -> Ví dụ:
+        function toCelsius(param) {
+            return (5/9) * (param - 32);
+        }
+
+        let value = toCelsius(77) --> Return function result
+        let value = toCelsius --> Return function object 
+
+3. Arrow function
+- Được giới thiệu từ bản ES6
+- Cho phép ghi cú pháp hàm ngắn gọn hơn
+- Ví dụ:
+    -> let myFunction = function(a, b) {return a * b}
+    --> let myFunction = (a, b) => a * b
+
+4. Parameter và argument
+- Trong JavaScript thì có sự khác về concept giữa 2 khái niệm củ chuối này: 
+    -> Parameter là tên khai báo 
+    -> Argument là giá trị mà function nhận được 
+
+-----------------------------------------------------------
+
+***********************
+* FUNCTION PARAMETERS *
+***********************
+
+-----------------
+|Parameter rules|
+-----------------
+- Khi khởi tạo function trong Js thì không cần định nghĩa kiểu dữ liệu của các parameter
+- Js cũng không có kiểm tra kiểu dữ liệu của các argument truyền vào function 
+- Js cũng không kiểm tra số lượng argument mà nó nhận được
+===> Lỏng lẻo vãi!!!
+
+----------------------
+| Default parameters |
+----------------------
+- Nếu truyền hàm mà không truyền đầy đủ argument thì argument bị thiếu sẽ mặc định à undefined
+- Có thể set giá trị defualt nếu như mà nó bị thiếu
+    -> function myFunction(x, y = 10) {
+        return x + y;
+    }
+    --> nếu chỉ truyền x thì y sẽ có giá trị mặc định là 10
+
+---------------------------
+| Function rest parameter | 
+---------------------------
+- Rest parameter là kí hiệu (...) cho phép function nhận vào vô số tham số truyền vào và gom chúng thành 1 mảng. Nó được dùng khi không biết trước function sẽ nhận bao nhiêu tham số
+- Vị trí của rest parameter phải luôn là ở cuối function 
+- Rest parameter bản chất là 1 Array nên có thể sử dụng mọi method của Array
+- Có thể sử dụng cho các data type như: string, number, ... 
+
+------------------------
+| The arguments object |
+------------------------
+- Trong Js thì mỗi function đều sẽ có 1 đối tượng đặc biệt tên là arguments
+- arguments chứa tất cả tham số truyền vào, dù function không khai báo parameter
+    -> Ví dụ: 
+        x = findMax(1, 123, 500, 115, 44, 88);
+
+        function findMax() {
+            let max = -Infinity;
+            for (let i = 0; i < arguments.length; i++) {
+                if (arguments[i] > max) {
+                max = arguments[i];
+                }
+            }
+            return max;
+        }
+- arguments không có trong arrow function
+!Lưu ý: 
+    + Cái này đã cũ rồi, hiện đại thì người ta dùng rest parameter bởi vì rest parameter là 1 mảng thật còn arguments thì chỉ là object nên đôi khi còn 1 vài hạn chế 
+    + Nếu 1 function được gọi với số lượng argument nhiều hơn số lượng parameters thì những argument đó có thể dùng arguments object để lấy ra 
+
+
+-----------------------------------------------------------
+
+************************
+* FUNCTION EXPRESSIONS *
+************************
+
+Function expression là gì?
+- Function expression là cách khai báo function bằng cách gắn function vào biến
+    -> Ví dụ: const x = function (a, b) {return a * b};
+- Function expression thì không bị hoisting, có thể khai báo không cần tên (hoặc có thì cũng được), dùng làm callback, dùng như giá trị truyền vào hoặc trả về từ hàm
+- Khi function được gán vào biến thì biến đó được dùng giống như 1 function 
+
+-----------------------------------------------------------
+
+************************
+*    FUNCTION ARROW    *
+************************
+- Được ra mắt từ bản ES6
+- Cung cấp cú pháp ngắn hơn so với các function bình thường
+- Có thể bỏ đi chữ 'function', 'return' và dấu {}
+    -> Ví dụ: let myFunction = (a, b) => a * b;
+- Về parameter đối với arrow function thì sẽ để trong dấu (). Trong trường hợp chỉ có 1 parameter thì có thể bỏ luôn dâu ()
+!Lưu ý: 
+    + Với những function chỉ có 1 câu lệnh return thì có thể bỏ dấu {}. Còn nếu không thì cần phải có dấu {} để xác định code block
+    + Arrow function phải được define trước khi được sử dụng 
+    + Arrow function là 1 dạng ghi tắt của expression function (tại vì nó cũng phải gắn vào biến, khai báo như kiểu declaration là chết cơm --> báo lỗi đó cu)
+
+
+

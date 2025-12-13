@@ -2,7 +2,7 @@
 - JavaScript can 'display' data in different ways:
     + Writing into an HTML element, using innerHTML (có thể thay đổi thẻ - tag của phần tử HTML trước đó) or innerText (chỉ thay đổi content của thẻ)
     + Writing into the HTML output using document.write()
-    + Writing into an alert bõ, using window.alert()
+    + Writing into an alert box, using window.alert()
     + Writing into the browser console, using console.log()
 
 1.1 Using innerHTML

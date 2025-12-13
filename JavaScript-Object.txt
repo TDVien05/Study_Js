@@ -1,0 +1,124 @@
+1. Cách khai báo 1 object trong js
+- Nên khai báo object với keword là 'const' để không thể thay đổi tham chiếu
+- Object lưu giá trị theo kiểu key - value gọi là property
+- Cú pháp: 
+    -> Ví dụ (sử dụng object literal): 
+        const car = {
+            type:'Fiat', 
+            model:'500', 
+            color: 'white'
+        };
+- Ngoài ra còn có thể sử dụng keyword: 'new Object({})'
+    -> Ví dụ:
+        const person = new Object({
+            firstName: "John",
+            lastName: "Doe",
+            age: 50,
+            eyeColor: "blue"
+        }); 
+2. Các cách để truy cập vào properties
+- Có 2 cách: 
+    -> objectName.propertyName
+    -> objectName["propertyName"] (có thể sử dụng cặp '', ``; không có vấn đề gì xảy ra, dạng như là mình truyền chuỗi vào thôi)
+
+3. Method 
+- Có thể định dạng method khi bắt đầu khai báo object:
+    -> Ví dụ:
+        const person = {
+            firstName: "John",
+            lastName : "Doe",
+            id       : 5566,
+            fullName : function() {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+
+4. Constructor
+- Có thể viết funtion để khởi tạo object --> constructor
+- Viết constructor như function bình thường thôi
+
+!!! ĐOẠN CODE NÀY BỊ LỖI
+-----------------------------------------------
+function Person(firstName, lastName, age, address) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.address = address;
+}
+
+const tempPerson = new Person('Doan Vien', 'Truong', 18, 'Dong Nai');
+
+const person = {
+    firstName: 'Truong',
+    lastName: 'Doan Vien',
+    age: 18,
+    address: 'Dong Nai',
+    info: function() {
+        return this.firstName + " " + this.lastName + ' ' + this.age;
+    }
+};
+
+console.log(person.info());
+console.log(tempPerson.info());
+-----------------------------------------------
+!Giải thích: 
+- Khi mà định nghĩa function Person(constructor Person) thì ta chưa định nghĩa method info nên sẽ gây ra lỗi khi console.log()
+- Nếu nhét method infor vào trong như này thì vẫn được, nhưng sẽ có 1 nhược điểm là mỗi instance tạo ra sẽ tạo thêm 1 function info, nó không tối ưu:
+    -> function Person(firstName, lastName, age, address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.address = address;
+
+        this.info = function() {
+            return this.firstName + " " + this.lastName + ' ' + this.age;
+        }
+    }
+--> Giải pháp: mình có thể sử dụng cách này thì tất cả các instant được tạo ra sẽ sử dụng chung 1 method này mà thôi
+    -> function Person(firstName, lastName, age, address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.address = address;
+    }
+
+    Person.prototype.info = function() {
+        return this.firstName + " " + this.lastName + ' ' + this.age;
+    };
+
+
+-----------------------------------------------
+
+*********************
+* Object Properties *
+*********************
+- Trong Js CÓ THỂ ADD THÊM PROPERTY --> Hay vcl
+- Có thể add thêm property bằng cách chỉ cần gán giá trị cho biến chứa object là được
+    -> Ví dụ: person.newProp = 'new Property';
+--> Là thêm được property cho object 
+
+- Để có thể xóa 1 property thì sử dụng key 'delete' sau đó truy cập vào property đó
+    -> Ví dụ: delete person.age;
+
+-----------------------------------------------
+
+*****************
+* Object Method *
+*****************
+- Có thể thêm method vào bên trong constructor luôn, hoặc sau khi define xong constructor có thể thêm method như thêm property
+- Có 1 điều cực kì hay --> có thể in ra các giá trị của property bằng cách sử dụng for each (cực kì hay, mới lạ)
+    -> Ví dụ: 
+        const person = {
+        name: "John",
+        age: 30,
+        city: "New York"
+        };
+
+        let text = "";
+        for (let x in person) {
+        text += person[x] + " ";
+        };
+    --> Phải truy cập thuộc tính qua [x] vì nếu để person.x là đang truy cập vào thuộc tính x
+- Object.values(): tạo ra 1 mảng từ các giá trị của property
+- Object.entries(): trả về theo kiểu map trong Java 
+- JSON.stringify(): trả về JSON format

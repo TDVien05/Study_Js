@@ -1,0 +1,35 @@
+- Đặc điểm của Map: 
+    + Key của Map có thể là bất kì data type nào
+    + Map ghi nhớ thứ tự insert của key
+
+1. Khởi tạp Map
+    // Create an empty Map
+    const fruits = new Map();
+
+    // Set Map Values
+    fruits.set("apples", 500);
+    fruits.set("bananas", 300);
+    fruits.set("oranges", 200);
+HOẶC LÀ
+    // Create a Map
+    const fruits = new Map([
+    ["apples", 500],
+    ["bananas", 300],
+    ["oranges", 200]
+    ]);
+- Muốn lấy phần tử thì sử dụng phương thức get, ví dụ: fruits.get('banana');
+- Map cũng là Object: typeof fruits --> object, fruits instanceof Map --> return true
+- Method groupBy()
+    + Dùng để group các phần tử của 1 iterable thành 1 map dựa trên key do lập trình viên xác định
+    + Kết quả trả về là 1 Map: Map<Key, Array<elements>></Key>
+    + Ví dụ: 
+        const numbers = [1, 2, 3, 4, 5, 6];
+
+        const result = Map.groupBy(numbers, n => n % 2 === 0 ? 'even' : 'odd');
+
+        console.log(result);
+    --> Output:
+        Map {
+            'odd'  => [1, 3, 5],
+            'even' => [2, 4, 6]
+        }

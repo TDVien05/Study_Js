@@ -1,0 +1,38 @@
+JavaScript Values:
+- Trong JavaScript định nghĩa 2 kiểu giá trị:
+    + Literals (giá trị cố định - không thay đổi).
+    + Variables (giá trị của biến bình thường).
+
+I. JavaScript Literals
+- Những nguyên tắc quan trọng của giá trị cố định là:
+    + Giá trị numbers là những số nguyên hoặc số thực
+        Ví dụ: 10.50 hoặc 1001
+    + Giá trị strings là kiểu giá trị chuỗi được ghi trong dấu '' hoặc ""
+        Ví dụ: 'hello world' hoặc "hello world" đều như nhau
+II. JavaScript Keywords
+- Sử dụng 'let' và 'const' để định nghĩa ra các biến
+- Lưu ý: JavaScript là kiểu phân biệt hoa thường
+
+III. JavaScript Variables
+- Variables dùng để lưu trữ dữ liệu
+- Variabe được khai báo với tên duy nhất, không trùng lặp
+
+IV. JavaScript Identifiers
+- Là tên của biến
+- Tên của biến được đặt với các quy tắc sau:
+    + Bắt đầu với 1 kí tự, _, hoặc $
+    + Có thể theo sau là các chữ số
+    + Không trùng với các từ khóa như: if, let, const, ... 
+    + Phân biệt hoa thường
+V. JavaScript và Camel Case
+- Có rất nhiều cách để đặt tên biến như:
+    + Hyphens:
+        first-name, last-name, ...
+    + Underscore:
+        first_name, last_name, ... 
+    + Upper Camel Case (Pascal Case)
+        FirstName, LastName, ...
+    + Lower Camel Case
+        firstName, lastName, ... 
+--> JavaScript sử dụng Lower Camel Case
+

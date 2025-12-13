@@ -1,0 +1,70 @@
+1. Array là gì?
+- Array là kiểu object đặc biệt dùng để lưu trữ danh sách dữ liệu
+- Đặc điểm:
+    + Có thứ tự
+    + Đánh chỉ mục từ 0
+    + Kích thước động (có thể thêm/ xóa)
+    + Lưu nhiều kiểu dữ liệu (string, number, object, array, ... )
+
+2. Cách tạo Array
+- Cách chuẩn nhất
+    -> const cars = ['Saab', 'Volvo', 'BMW'];
+- Tạo rỗng rồi gán
+    -> const cars = [];
+    -> cars[0] = 'Saab';
+- Hoặc có thể tạo bằng new Array (không được khuyến khích cho lắm)
+- Array có thể chứa nhiều data type trong array 
+    -> Giải thích: 
+        + Js là ngôn ngữ kiểu động
+        + Biến không gắn chặt với 1 kiểu dữ liệu nhất định
+        --> Kiểu dữ liệu của biến sẽ phụ thuộc vào giá trị hiện tại mà biến đang nắm giữ --> array là tập hợp các giá trị (mà giá trị có thể thay đổi được)
+        + Bản chất Js trong Array là 1 object đặc biệt, các phần tử được lưu dưới dạng property với các key là các số từ 0, 1, 2, ...
+        + Các phần tử của khởi tạo new Array sẽ là undefine (nếu chưa được gắn giá trị)
+- Nếu mảng đang có 4 phần tử, add phần tử mới vào vị trí thứ 10 thì các vị trí trống sẽ là undefined 
+
+-----------------------------------------------
+*******************
+* JS ARRAY METHOD *
+*******************
+1. Array.length
+2. Array.toString()
+3. Array.at()
+- Dùng để lấy phần tử thứ i ra
+4. Array.join()
+- Dùng để nối tất cả các phần tử của 1 array thành chuỗi
+    -> Ví dụ:
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.join(" * ");
+        --> Output: Banana * Orange * Apple * Mango
+5. Array.pop()
+- Lấy phần tử cuối cùng ra khỏi Array (method trả về phần tử cuối cùng đó)
+6. Array.push()
+- Thêm 1 phần tử vào cuối array (method trả về length mới của Array)
+7. Array.shift()
+- Lấy phần tử đầu tiên ra khỏi Array (method trả về phần tử đầu tiên của Array)
+8. Array.unShift()
+- Thêm 1 phần tử vào đầu Array (trả về length mới)
+9. Array.isArray
+10. Array.delete()
+- Xóa phần tử thứ i đi, nhưng giá trị undefined sẽ được thay thế vào
+11. Array.concat()
+- Dùng để nối 2 array lại với nhau (method trả về 1 array mới)
+- Có thể concat nhiều array luôn
+12. Array.slice()
+- Dùng để cắt mảng từ 1 index nhất định
+- Method trả về 1 mảng mới chứ không xóa phần tử trong mảng cũ
+13. Array.splice()
+- Truyền vào 2 tham số index 
+- Có thể dùng để xóa hoặc add hoặc replace các phần tử
+- Ví dụ: 
+    -> Thêm phần tử:
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.splice(2, 0, "Lemon", "Kiwi");
+        --> Tham số đầu là vị trí index con trỏ chuột sẽ trỏ vào
+        --> Tham số thứ 2 là số phần tử sẽ xóa. Ở đây là 0 thì sẽ không xóa phần tử nào
+        --> Phía sau tham số thứ 2 thì là các phần tử sẽ được add vào
+    -> Xóa phần tử: 
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 2, "Lemon", "Kiwi");
+        --> Từ vị trí thứ 2 xóa đi 2 phần tử 
+- Phương thức trả về PHẦN TỬ ĐÃ BỊ XÓA 

@@ -1,0 +1,68 @@
+1. Math Object trong JavaScript là gì?
+- Math là đối tượng dựng sẵn (built-in object) trong JavaScript, dùng để thực hiện các phép toán toán học.
+- Math là static object
+- Không cần (và không thể) tạo instance bằng new
+- Dùng trực tiếp qua Math.tênThuộcTính hoặc Math.tênHàm
+- Ví dụ:
+    Math.PI;
+    Math.sqrt(16);
+
+2. Các hằng số (Math Properties)
+- JavaScript cung cấp một số hằng số toán học quan trọng:
+    Thuộc tính	
+    Math.PI --> Số PI
+    Math.E --> Số Euler
+    Math.SQRT2 --> Căn bậc hai của 2
+    Math.SQRT1_2 --> Căn bậc hai của 1/2
+    Math.LN2 --> Logarit tự nhiên của 2
+    Math.LN10 --> Logarit tự nhiên của 10
+    Math.LOG2E --> Logarit cơ số 2 của E
+    Math.LOG10E -->Logarit cơ số 10 của E
+
+3. Làm tròn số (Rounding)
+- JavaScript có nhiều cách làm tròn, mỗi hàm có hành vi khác nhau:
+- Hàm Mô tả
+    Math.round(x)	Làm tròn gần nhất
+    Math.ceil(x)	Làm tròn lên
+    Math.floor(x)	Làm tròn xuống
+    Math.trunc(x)	Cắt bỏ phần thập phân
+- Ví dụ:
+    Math.round(4.5); // 5
+    Math.ceil(4.2);  // 5
+    Math.floor(4.9); // 4
+    Math.trunc(-4.2);// -4
+
+4. Kiểm tra dấu của số
+- Math.sign(x);
+- Kết quả:
+    + 1 nếu số dương
+    + -1 nếu số âm
+    + 0 nếu bằng 0
+
+5. Các phép toán phổ biến
+- Hàm Chức năng
+    + Math.pow(x, y)	Lũy thừa
+    + Math.sqrt(x)	Căn bậc hai
+    + Math.abs(x)	Giá trị tuyệt đối
+
+6. Hàm lượng giác (dùng radian)
+- JavaScript dùng radian, không phải độ.
+- Hàm	Mô tả
+    + Math.sin(x)	Sin
+    + Math.cos(x)	Cos
+
+7. Tìm số lớn nhất / nhỏ nhất
+Math.max(1, 5, 3); // 5
+Math.min(1, 5, 3); // 1
+
+8. Số ngẫu nhiên
+- Math.random();
+- Trả về số trong khoảng [0, 1)
+- Muốn random trong khoảng cụ thể:
+--> Math.floor(Math.random() * 10); // 0 → 9
+
+9. Logarithm
+- Hàm 
+    + Math.log(x)	Log tự nhiên
+    + Math.log2(x)	Log cơ số 2
+    + Math.log10(x)	Log cơ số 10

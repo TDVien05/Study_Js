@@ -1,0 +1,73 @@
+- Trong JavaScript thì không chia kiểu số nguyên hay số thực, mà sẽ gọi chung là kiểu dữ liệu Number
+- Trong JavaScript thì lại không phân ra nhiều kiểu dữ liệu số như những ngôn ngữ khác --> nó chỉ có kiểu dữ liệu số là Number
+- JavaScript luôn luôn lưu trữ các số dưới dạng số double trong những ngôn ngữ khác. JavaScript lưu trữ số dưới dạng 64 bit, bao gồm các phần: 
+    | value = (-1)^sign × (1.fraction_binary) × 2^(exponent - 1023) |
+    * 1 bit Sign --> xác định dấu (+/-)
+    * 11 bit Exponent --> giúp biển diễn số cực lớn hoặc cực nhỏ
+        -> Exponent là "mũ của 2"
+    * 52 bit Mantissa (fraction) --> phần chính quyết định độ chính xác
+        -> Mantissa lưu phần thập phân dưới dạng nhị phân
+- Số nguyên thì lưu trữ được 15 chữ số
+- Số thập phân thì lưu trữ được 15 - 17 chữ số (tính cả phần nguyên và phần thập phân) 
+-----------------------
+|          NaN         |
+-----------------------
+- Trong JavaScript có 1 phần hay cực kì về kiểu dữ liệu Numeric String.
+    -> Ví dụ:
+        let x = `20`;
+        let y = `5`;
+    --> Khi đó thì ta có thể thực hiện các phép -, *, /
+    --> Không thể thực hiện được phép "+" vì đó sẽ là ghép chuỗi 
+    -> Ví dụ: 
+        let x = 100 / "Apple"
+    --> JavaScript sẽ trả về key word "NaN" (Not a number)
+    --> Có thể sử dụng Global Function isNaN() để kiểm tra một biến có phải kiểu số hay không?
+    --> Nếu sử dụng biến có giá trị NaN trong biểu thức thì sẽ trả về NaN
+    --> NaN vẫn là 1 dữ liệu kiểu Number, sử dụng typeof(NaN) thì sẽ trả về kiểu dữ liệu Number 
+
+-----------------------
+|        Infinity      |
+-----------------------
+- Infinity hoặc -Infinity là giá trị mà JavaScript sẽ trả về khi mà giá trị trả về nó vượt mực pickleball
+- Chia cho 0 sẽ trả về giá trị Infinity 
+    -> Ví dụ:
+        let x = 2 / 0 --> trả về Infinity
+        let y = -2 / 0 --> trả về -Infinity
+- Infinity là giá trị có kiểu dữ liệu là Number
+- Mặc định thì JavaScript sẽ hiển thị giá trị của số theo hệ số 10 decimals, nhưng có thể dùng phương thức toString() để thay đổi giá trị hệ số được in ra.
+    -> Ví dụ: 
+        let myNumber = 2;
+        myNumber.toString(16);
+    16: Hexadecimal
+    10: Decimal
+    8: Octal
+    2: Binary
+
+-----------------------
+|   Number as Objects  |
+-----------------------
+- Như kiểu string, Number cũng có kiểu object
+- Ví dụ:
+    -> let y = new Number(123);
+- Lưu ý: 
+    -> Nó có thể làm chậm quá trình thực thi code
+    -> Nó có thể tạo ra những vấn đề không mong muốn như là so sánh giữa 1 object và 1 giá trị primitive
+
+-----------------------
+|   JavaScript BigIn   |
+-----------------------
+- BigInt là kiểu dữ liệu để xử lí và lưu trữ các giá trị số integer lớn
+- BigInt cho phép lập trình viên làm việc với các giá trị lớn hơn giới hạn của kiểu Number
+- BigInt không bị giới hạn số chữ số (nó tự mở rộng ô nhớ để chứa giá trị), nó bị giới hạn bởi RAM của máy tính 
+- Có 2 cách tạo BigInt:
+    -> Sử dụng `n` suffix: let x = 99999999999999999n;
+    -> Sử dụng type BigInt: let y = BigInt("99999999999999999n"); --> Có thể truyền vào chuỗi hoặc là 1 con số
+- BigInt là 1 kiểu dữ liệu trong JavaScript, typeof BigInt --> BigInt
+
+- Lưu ý: 
+    + Không thể thực hiện các phép tính BigInt và Number cùng nhau vì không cùng kiểu, nó trả về TypeError --> Để khắc phục vấn đề này thì dùng casting
+    --> Để chuyển đổi thì có thể sử dụng constructor của 2 kiểu dữ liệu này (BigInt khi cast về Number thì có thể trở thành Infinity hoặc thiếu mất sự chính xác)
+    + BigInt thì không thể sử dụng cho số thập phân 
+    + Những phương thức dùng cho Number thì có thể không dùng cho BigInt vì không có auto casting --> thả ra lỗi 
+    
+

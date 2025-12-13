@@ -1,0 +1,57 @@
+- Set là tập hợp những giá trị độc nhất, những giá trị sẽ không bị trùng lặp 
+- Set có thể chứa nhiều kiểu dữ liệu, từ primitive hoặc object
+
+1. Cách khởi tạo set
+- Dùng phương thức new Set() (có thể truyền tham số vào)
+- new Set() chỉ nhận vào 1 tham số duy nhất là iterable.
+- Ví dụ: new Set('a', 'b', 'c') --> chỉ nhận vào 'a' thôi, vì chỉ có 1 tham số duy nhất. 'abc' thì nhận vào chuỗi, sau đó Set tự động tách từng kí tự
+- Iterable là thứ có thể lặp từng phần tử. Nói chung là cứ truyền vào 1 argument duy nhất, nhưng argument đó phải chứa nhiều giá trị, ví dụ như là mảng
+- Set không tự động sắp xếp value tăng dần, mà sẽ theo thứ tự insert của phần tử có trong Set. Có thể dùng method Sort mà sắp xếp các phần tử
+- .add(): để add phần tử vào trong Set
+2. Cách duyệt set
+- Dùng for ... of loop:
+    -> Ví dụ:
+        const letters = new Set('ABC');
+
+        let text = "";
+        for (const x of letters) {
+        text += x;
+        }
+3. Set là object
+- const letter = new Set();
+- typeof letters --> object
+- letters instanceof Set; --> true
+
+-----------------------------------------------
+- Set properties:
+    + size
+-----------------------------------------------
+
+***************
+* SET METHODS *
+***************
+- new Set(): khởi tạo 1 object Set mới
+- add(): thêm phần tử vào trong Set
+- has(): trả về true nếu Set có phần tử đó, tham số là phần tử muốn tìm
+- forEach(): gọi function cho mỗi phần tử Set
+- union(): trả về Set mới chứa các giá trị từ 2 Set ban đầu, và không chứa trùng lặp các giá trị
+- intersection(): trả về Set mới chứa giá trị trùng của 2 set
+- difference(): trả về những phần tử của tập hợp a \ b
+- symmetricDifference(): trả về phần hợp của 2 tập hợp (a \ b) U (b \ a)
+- isSubsetOf(): trả về true nếu như tất cả phần tử của tập hợp này là con của tập hợp tham số truyền vào (a.isSubsetOf(b))
+- isSupersetOf(): concep tương tự isSubsetOf nhưng là kiểu tra ngược lại 
+- isDisjointFrom(): trả về true nếu 2 Set không có bất kì phần tử con nào giống nhau 
+-----------------------------------------------
+***********
+* WEAKSET *
+***********
+- Là Set chỉ chứa các phần tử là object
+- Nếu add primitive data type vào thì sẽ xảy ra lỗi
+
+**********************
+* GARBAGE COLLECTION *
+**********************
+- Là cơ chế hoạt động giúp Js: 
+    + Sử dụng bộ nhớ 1 cách hiệu quả
+    + Thu thập lại các biến khi không còn sử dụng
+    + Ngăn chặn memory leaks

@@ -1,0 +1,177 @@
+Variables = Data containers
+JavaScript variable có thể được khai báo bằng 4 cách
+    + Modern JavaScript: dùng let và const
+    + Older JavaScript: dùng var và automatically (không được khuyên dùng cho lắm)
+
+I. Declaring a variable using let
+- let carName;
+--> Sau khi được khai báo, biến không có giá trị (undefined)
+- carName = "Volvo";
+--> Gán giá trị cho biến
+
+II. Declaring a variable using const (dùng cho hằng số)
+- const carName = "Volvo";
+
+III. Declaring a variable automatically
+- Ví dụ: 
+    x = 5;
+    y = 7;
+    z = x + y;
+--> Kiểu dữ liệu của biến sẽ phụ thuộc vào giá trị được gán
+--> Vì sao không nên sử dụng:
+    * Biến sẽ tự động trả thành biến global:
+        + Xung đột hoặc ghi đè biến global
+        + Khó kiểm soát phạm vi biến
+        + Rất dễ gây ra lỗi ngầm
+    * Khó debug - vì code chạy được nhưng lại sai logic
+        + Ví dụ:  
+            let count;
+            cout = 5;
+        --> Trong trường hợp này nếu không sử dụng "strict mode" thì JavaScript sẽ tự động tạo ra 1 biến mới, gây khó debug cực kì
+    * Dễ gây memory leak 
+        + Vì biến global không bị giải phóng cho đến khi đóng trang --> dễ bị memory leak
+    * Không tương thích với strict mode từ (ES5 trở lên)
+        + Hiện nay, hầu hết các code base đều sử dụng "strict mode" ngay đầu file Js
+    * Không tương thích với TypeScript hoặc ESlint
+    * Làm code khó đọc 
+
+IV. Declaring a variable var
+- Được sử dụng từ năm 2015 trở về trước
+--> Vì sao không nên sử dụng:
+    * var bị hosting theo cách khó đoán:
+        + Ví dụ:
+            console.log(x); // undefined
+            var x = 10;
+        -> Biến x được hoisted như:
+            var x;
+            console.log(x);
+            x = 10;
+        --> Cực kì dễ gây ra bug (let và const thì hoist theo kiểu khác)
+    * var không có block scope - dễ ghi đè biến
+        + Ví dụ:
+            if(true) {
+                var a = 10;
+            }
+            console.log(a);
+        --> Đoạn code trên là hợp lệ -> khó hiểu code vcl 
+    * var cho phép cơ chế re-declaired
+        + var cho phép khai báo lại 1 biến nhiều lần
+        --> Điều này dễ gây bug lớn khi code lớn hoặc nhiều người cùng làm (let và const thì không cho phép)
+    * Dễ gây xung đột biến (popullation) trong function
+        + Ví dụ:
+            function test() {
+                for(var i = 0; i < 3; i++) {}
+                console.log(i);
+            }
+        --> i thoát ra khỏi vòng for (phá hỏng logic code)
+        --> Dù không bị lỗi syntax nhưng phạm sai lầm cực lớn về mặt logic 
+    * Không thân thiện với asymc/closures
+        + Ví dụ: 
+            for(var i = 0; i < 3; i++) {
+                setTimeOut(() => console.log(i), 100)
+            }
+        + Output: 
+            3
+            3
+            3
+        --> Vì var không bị giới hạn của block scope, mà vòng for chạy rất nhanh nên đoạn code của logic trên có thể dễ hiểu
+    * var không còn phù hợp với nhiều công nghệ hiện nay:
+        + ES6+
+        + TypeScript
+        + React/ Vue/ Svelte
+        + Nodejs hiện đại
+        + ESLint (quy tắc no-var)
+        + Airbnb style guide
+ !Lưu ý:
+1. ESLint là gì?
+- ESLint là 1 công cụ kiểm tra lỗi code JavaScript
+- Nó phân tích code và báo lỗi:
+    + Lỗi logic
+    + Lỗi cú pháp
+    + Viết code không chuẩn
+    + Viết code dễ gây lỗi
+- Dùng quy tắc no-var --> Chỉ dùng let và const
+2. Airbnb style guide là gì?
+- Đây là bộ quy tắc viết JavaScript chuẩn nhất thế giới được tạo bởi Airbnb - một trong những công ty lớn nhất dùng JavaScript
+- Airbnb style guide quy định những cách viết:
+    + Biến
+    + Hàm
+    + Class
+    + Module
+    + Arrow function
+    + Promises
+    + Async/await
+    + Imports/exports
+    + Object
+    + Array
+    + Naming conventions
+    + Comment
+    + Code formatting
+- Mục tiêu:
+    + Code rõ ràng
+    + Hạn chế bug
+    + Thống nhất giữa các lập trình viên
+    + Dễ đọc - dễ maintain
+--> Cấm hoàn toàn sử dụng 'var'
+3. Hoist là gì?
+- Hoisting là cơ chế của JavaScript mà trong đó 'trình thông dịch (JS engine) sẽ "kéo" khai báo biến và hàm lên đầu scope trước khi chạy code'
+4.Thông dịch (interpreter) và biên dịch (compile)
+- Thông dịch:
+    + Thực thi chương trình theo từng dòng 
+    + Cách hoạt động:
+        -> Không tạo ra file máy riêng
+        -> Trình thông dịch đọc code từ trên xuống dưới
+        -> Gặp dòng nào -> phân tích -> chạy luôn dòng đó
+    + Ví dụ các ngôn ngữ dùng thông dịch:
+        -> JavaScript
+        -> Ruby
+        -> Bash
+    + Ưu điểm:
+        -> Chạy ngay lập tức (không cần build)
+        -> Dễ debug vì lỗi xảy ra đúng dòng đang chạy
+        -> Code linh hoạt
+    + Nhược điểm:
+        -> Chậm hơn vì phải phân tích code mỗi lần chạy
+        -> Lỗi chỉ phát hiện khi chạy đến dòng đó
+        -> Không tối ưu hiệu suất bằng compiler
+- Biên dịch:
+    + Dịch toàn bộ mã nguồn thành mã máy trước khi chạy
+    + Cách hoạt động
+        -> Compiler dịch toàn bộ src code ra file binary/excutable
+        -> Người dùng chạy file đã được dịch
+        -> Việc phân tích, tối ưu diễn ra trước khi chạy 
+    + Một số ngôn ngữ dùng biên dịch:
+        -> C
+        -> C++
+        -> Rust
+    + Ưu điểm:
+        -> Chạy rất nhanh (vì là mã máy)
+        -> Tối ưu tốt hơn, hiệu suất nâng cao
+        -> Phát hiện lỗi biên dịch sớm
+    + Nhược điểm:
+        -> Phải build trước khi chạy (tốn thời gian hơn)
+        -> Debug phức tạp hơn
+        -> Ít linh hoạt hơn runtime
+==> Nhiều ngôn ngữ kết hợp cả thông dịch và biên dịch cùng với nhau 
+-----------------------------------------------------------
+I. JavaScript let
+- Được ra mắt từ ES6 (2015)
+- Let có cơ chế block scope, phải khai báo trước khi sử dụng, không có cơ chế re-declaired
+* Block scope:
+- Trước ES6 thì JavaScript không có cơ chế Block Scope do sử dụng var --> Chỉ có global scop và function scope
+II. JavaScript const
+- Được ra mắt trong ES6 (2015)
+- Const dùng cho các biến: không redeclared, không reassigned, có block scope, không thay đổi giá trị 
+- khi khai báo biến với const --> cần phải gán giá trị luôn cho biến
+- Sử dụng const với các kiểu dữ liệu như:
+    + Mảng
+    + Object
+    + Function
+    + Regexp
+1. Constant Objects và Arrays
+- const không tạo ra 1 giá trị không đổi, mà const tạo ra 1 liên kết (con trỏ) không đổi đến với ô nhớ chứa giá trị đó
+--> const không làm cho giá trị của object/array trở nên bất biến, mà chỉ làm cho không thể gán lại. Nghĩa là sẽ không thể gán object/array mới vào, nhưng có thể thay đổi nội dung bên trong các element đã tồn tại 
+--> const chỉ khóa tham chiếu của object/array chứ không khóa value bên trong chúng
+!Lưu ý: 
+- Với primitive data type, reference như là giá trị (bởi vì khi khởi tạo thì mỗi ô nhớ chứa giá trị có riêng cho mình 1 địa chỉ) nên const không thể thay đổi được
+==> const chỉ không làm thay đổi tham chiếu, chứ không làm giá trị bất biến 
