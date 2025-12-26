@@ -1,0 +1,44 @@
+1 - JavaScript variable can hold 8 types of data.
+  - Include: 
+        + 7 primitive data types
+        + 1 object data type
+    *** The object data type can hold many different object types
+
+2. Data types
+2.1 primitive data type
+    + Numeric: Number, Bigint
+    + Non - Numeric: String, Boolean, Null, Undefined, Symbol
+2.2 object
+    + object
+    + Array
+    + Function
+    + Date
+    + RegExp
+    + Set
+    + Map
+
+*** Note:
+    + Undefined: a primitive variable with no assigned value
+    + Null: A primitive value representing object absence
+
+*** JavaScript types are dynamic
+- JavaScript has a dynamic types. This means that the same variable can be used to hold different data types.
+
+*** JavaScript object are written with curly braces {}.
+
+*** 
+- The strict equality operator (===) for checking NULL value
+- typeof null --> return object
+
+*** Diffrence between Undefined and null
+- Undefined and null are equal in value but different in type:
+    + typeof Undefined --> Undefined
+    + typeof null --> object
+    + null === Undefined --> false
+    + null == Undefined --> true 
+
+*** The Diffrence between "==" and "==="
+- "==" loose equality
+    + Compare value (automatically casting data type before Compare value)
+- "===" Compare both of value and type of
+

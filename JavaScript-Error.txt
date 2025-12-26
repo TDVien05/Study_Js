@@ -1,0 +1,55 @@
+Use try catch to handle error in JavaScript
+
+1. JavaScript Type Errors
+- A Type Error occurs when a value is of the wrong type or an operations is invalid on that type.
+- Example: 
+    + Anna(5) --> Anna is not a function (TypeError)
+    + let num = 1; num.toUpperCase()--> num.toUpperCase is not a function (Type Error)
+
+2. JavaScript Range Errors
+- A RangeError occurs when a value is out of its valid range.
+- Example: 
+    + new Array(-1) --> invalid array length (RangeError) --> RangeError
+    + num.toPrecision(500) --> toPrecision() argument must be between 1 and 100 --> RangeError
+
+3. JavaScript URI Errors
+- URI (Uniform Resource Identifier Errors)
+- An URIError occurs if you use illegal characters in a URI function.
+- Example: 
+    + decodeURI(%%%) --> URI malformed (URIError)
+
+4. JavaScript Syntax Error
+- A Syntax Error occurs when the code violates JavaScript's grammar rules.
+- Syntax Error cannot catch by try catch
+- Why:
+    + The point is how the browser handles syntax errors.
+    + The JavaScript engine throws a SyntaxError before running the script.
+    + Syntax errors are caught before the try ... catch block executes.
+    --> This means the try catch never starts. 
+
+---------------------
+JavaScript Silent Errors
+- Silent errors are errors that fail without throwing an exception, meaning:
+    + No crash
+    + No red error in console
+    + Code runs but produces wrong or unexpected behavior
+    --> These are the hardest bugs to detect
+- Example:
+    + let x = 1 / 0 --> return infinity, not crash or throw exception
+---------------------
+JavaScript throws errors
+- When an error occurs, JavaScript will normally stop and generate an error message.
+- JavaScript will actually create an Error object with two properties: name and message
+- Can throw any data type of JavaScript
+- Example: 
+    + throw "Throw an exception";
+    + throw 500;
+---------------------
+JavaScript error reference
+1. The error object
+- JavaScript has a built in error object that provides error information when an error occurs.
+- It has two properties: name and message.
+- There are many "Non - standard properties and method" that mean just many web browser support these properties and method (not all web browser).
+---------------------
+Debugging
+- Use key word debugger for debugging

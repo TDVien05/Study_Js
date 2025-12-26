@@ -169,7 +169,8 @@
 // 2. Dữ liệu phức tạp -- Complex data
 // 2.1. Function
 // 2.2. Object
-
-const test = new WeakSet([{fName: 'Vien', age: 18}, 15]);
-
-console.log(test);
+const input = document.getElementById('input');
+const box = document.getElementById('box');
+input.addEventListener('keydown', function(event) {
+    box.innerHTML = 'You pressed' + event.key;
+});
