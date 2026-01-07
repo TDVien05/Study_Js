@@ -1,0 +1,28 @@
+JavaSCript Classes 
+- ECMASCript 2015, also known as ES6, introduced JavaSCript Classes
+- JavaSCript Classes are templates for JavaSCript Objects
+
+1. Syntax
+- Use the keyword class to create a class
+- Always add a method named 'constructor()'
+
+2. How to declare property in JavaSCript
+- Declare property in constructor
+- Declare in class field
+    class Person{
+        name;
+        age;
+    }
+- Declare private property
+    class Person{
+        #balance;
+    }
+- Declare static property:
+    class Person{
+        static balance = 100;
+    }
+
+3. Class inheritance
+- Use keyword 'extend'
+- Use keywords 'get/set' for create Getters/Setters
+
