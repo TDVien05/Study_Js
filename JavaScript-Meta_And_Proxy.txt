@@ -1,0 +1,112 @@
+1. Metaprogramming
+- Metaprogramming is writing code that can observe, modify, or control other code (pr itself) at runtime
+- Metaprogramming allows you to:
+    + Inspect (kiem tra) 
+    + Modify
+    + Intercept (chan dung) 
+    + Generate new functions dynamically
+- JavaSCript supports metaprogramming mainly via:
+    + Object & reflection
+    + this, call, apply
+    + Object.*
+    + Proxy
+    + Reflect 
+    + Dynamic functions(Function, eval)
+    + Decorator-like patterns
+
+1.1 Modify Objects at runtime
+- Concept
+    + Object in JavaSCript are mutable
+    + You can add, remove, or change properties and methods at runtime 
+- This is metaprogramming because:
+    + Structure of the object is not fixed
+    + Behavior changes while programming is running
+
+1.2 Inspect Object at runtime (Reflection)
+- Concept:
+    + Reflection means:
+        * The program can ask question about itself
+- Example:
+    + What properties does this object have?
+    + Is this property writable?
+    + Is this method enumerable?
+- Common Reflection APIs:
+    + Object.keys(obj);
+    + Object.getOwnPropertyNames(obj);
+    + Object.getOwnPropertyDescriptor(obj, "prop");
+
+1.3 Control Objects at runtime
+- Concept:
+    + You can control how objects behave, such as:
+        * Prevent modification
+        * Make properties read-only 
+        * Freeze object structure 
+- Example:
+    + Prevent adding/removing properties    
+        const config = {
+            : "https://api.example.com"
+        };
+
+        Object.seal(config);
+        config.timeout = 5000; // not allowed
+- This is metaprogramming because:
+    + You change rules of interaction
+    + You control object behavior dynamically
+
+1.4 Intercept Running Operations 
+- This is core metaprogramming in JavaSCript
+- Proxy (most powerful tool)
+    + Proxy let you intercept operations like property access, assignment, function calls, deletion, etc 
+
+
+*** What is Proxy
+- A Proxy is like a security guard standing in front of an object
+- Instead of using object directly, we should wrap an object into a Proxy
+- The Proxy can:
+    + Watch what you do
+    + Change the result
+    + Block the action
+    + Add logic 
+
+*** Proxy with Reflect 
+- Reflect makes Proxy behavior match normal object behavior 
+---------------------------------------------------------------------
+JavaSCript Reflect
+* The Reflect Object
+- Reflect is a object with methods for low-level operations on JavaSCript objects 
+- With the Reflect object you can get, set, delete, and check object properties in a consistent way 
+
+* Before Reflect
+- Before Reflect, object operations were scattered:
+    + Using operators like in and delete
+    + Using methods like Object.defineProperty
+    + Using language mechanisms like [[Get]] and [[Set]]
+
+* After Reflect
+- Reflect brings all object operations into cleans methods:
+    + Reflect methods unifies object operations 
+    + Reflect methods are more predictable than operators
+    + Reflect methods provides standard return values instead of errors
+    + Reflect methods are cleaner and safer for meta-programming
+    + Reflect methods are tailored for the Proxy object 
+
+--> Reflect is safe and flexible, especially when used inside a Proxy 
+- Reflect.has() --> checks if an object has a specific property // similar with in operator #Syntax: Reflect.has(obj, prop) --> Return true/false (TypeError thrown if obj is not an object)
+- Reflect.deleteProperty() --> methods deletes a property from an object // similar to the delete operator #Syntax: Reflect.deleteProperty(obj, prop) --> Return true/false (TypeError thrown if obj is not an object)
+- Reflect.get() --> method retrieves the value of a property #Syntax: Reflect.get(obj, prop [,receiver]) --> Return value of property
+*** receiver is the object on which the property access was originally performed --> Assign 'this' to perform
+- Reflect.set() --> method sets the value of a property #Syntax: Reflect.set(obj, prop, value [,receiver]) --> Return true(success)/false 
+- Reflect.apply() --> method calls a function with a this value and an argument array #Syntax: Reflect.apply(function, obj, arguments) --> Return function value (arguments - array like object of function arguments) 
+- Reflect.construct() --> method acts like the new operator, creating new instance of target with the provided argument #Syntax: Reflect.construct(obj, args [,newTarget]) 
+- Reflect.defineProperty() --> defines or modifies a property #Syntax: Reflect.defineProperty(obj, prop, attributes)
+// Create an Object
+const user = {};
+
+// Add a Property
+Reflect.defineProperty(user, "id", {
+  value: 123,
+  writable: false
+});
+- Reflect.ownKeys() --> method returns an array of an objects own property keys (strin and Symbol based) 
+
+
