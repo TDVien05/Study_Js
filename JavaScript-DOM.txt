@@ -84,4 +84,123 @@ DOM Root Nodes
 ------------------------------------------------
 JavaSCript HTML DOM Elements (Nodes)
 
+1. Creating new HTML Elements (Nodes) 
+- To add a new element to the HTML DOM, you must create the element (element node) first, and then append it to an existing element 
+- Example:
+ <div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
 
+<script>
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const element = document.getElementById("div1");
+element.appendChild(para);
+</script> 
+
+2. Creating new HTML Elements - insertBefore()
+- The appendChild() method appended a new element as the last child of the parent 
+- If you dont want that you can use 'insertBefore()' method
+- Example:
+ <div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const element = document.getElementById("div1");
+const child = document.getElementById("p1");
+element.insertBefore(para, child);
+</script> 
+
+3. Removing Existing HTML Elements 
+- To remove an HTML element, use the 'remove()' method:
+- Example:
+ <div>
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+const elmnt = document.getElementById("p1"); elmnt.remove();
+</script> 
+
+4. Removing a Child Node
+- Example:
+ <div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+const parent = document.getElementById("div1");
+const child = document.getElementById("p1");
+parent.removeChild(child);
+</script> 
+
+5. Replacing HTML Elements
+- To replace an elemen to the HTML DOM, use the 'replaceChild()' method:
+
+<div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const parent = document.getElementById("div1");
+const child = document.getElementById("p1");
+parent.replaceChild(para, child);
+</script> 
+
+------------------------------------------------
+JavaSCript HTML DOM Collections 
+
+1. The HTMLCollection Object 
+- The getElementByTagName() method returns an HTMLCollection object
+- An HTMLCollection object is an array-like list of HTML elements
+- Example:
+const myCollection = document.getElementsByTagName("p");
+--> The element in the collection can be accessed by an index number 
+--> The index starts at 0 
+
+*** Note
+- An HTMLCollection is NOT an array
+- HTMLCollection can access by index as an array, but it cannot fully use method of array like: pop(), push(), ... 
+
+------------------------------------------------
+JavaSCript HTML DOM Node Lists 
+
+1. The HTML DOM NodeList Object 
+- A NodeList object is a list of nodes extracted from a document
+- A NodeList object is almost the same as an HTMLCollection
+- All browser return a NodeList object for the property 'childNodes'
+- Most browser return a NodeList object for the method 'querySelectorAll()'
++---------------------------+-------------------------------+-------------------------------+
+| Feature                   | HTMLCollection                | NodeList                      |
++---------------------------+-------------------------------+-------------------------------+
+| Type of collection        | HTML elements only            | DOM nodes                     |
+| Includes text nodes       | No                            | Yes (text, comments)          |
+| Live (auto-updating)      | Always live                   | Sometimes (usually static)    |
+| Updates on DOM change     | Yes                           | No (if static)                |
+| Returned by               | getElementsByTagName()        | querySelectorAll()            |
+|                           | getElementsByClassName()      | childNodes                    |
+|                           | document.forms/images         |                               |
+| CSS selector support      | No                            | Yes                           |
+| forEach() support         | No (most browsers)            | Yes                           |
+| Index access [0]          | Yes                           | Yes                           |
+| length property           | Yes                           | Yes                           |
+| Named access (name/id)    | Yes                           | No                            |
+| Typical usage today       | Legacy / limited use          | Modern / preferred            |
+| Predictability            | Lower (side effects possible) | Higher (safe & predictable)   |
++---------------------------+-------------------------------+-------------------------------+
