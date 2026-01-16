@@ -1,0 +1,87 @@
+In HTML, each tag in HTML is a node:
+    + The entire document is a document node
+    + Every HTML element is an element node
+    + The text inside HTML elements are text nodes
+    + Every HTML attribute is an attribute node (deprecated)
+    + All comments are comment nodes 
+--> With the HTML DOM, all nodes in the node tree can be accessed by JavaSCript
+--> New node can be created, and all nodes can be modifired or deleted
+
+1. Node Relationships
+- The nodes in the node tree have a hirarachcal relationship to each other
+- The terms parent, child, and sibling are used to describe the relationships:
+    + In a node tree, the top node is called the root (root node)
+    + Every node has exactly one parent, except the root (which has no parent)
+    + A node can have a number of children
+    + Siblings are nodes with the same parent 
+
+2. Navigating between nodes
+- Use these following properties to nagigate nodes with JavaSCript:
+    + parentNode
+    + childNodes[node_number]
+    + firstChild
+    + lastChild
+    + nextSibling
+    + previousSibling 
+
+*** Note:
+    --------------------------------------------
+    |   <title id="demo">DOM Tutorial</title>   |
+    --------------------------------------------
+ - We treat 'DOM Tutorial' as a text node not a text attribute in 'demo'
+ - So we have many way to access this text node:
+    + Use innerHTML --> myTitle = document.getElementById('demo').innerHTML;
+    + Using first child and 'nodeValue - property' --> myTitle = document.getElementById('demo').firstChild.nodeValue;
+    + Access by node index --> myTitle = document.getElementById('demo').childNodes[0].nodeValue;
+
+DOM Root Nodes 
+- There are two special properties that allow access to the full document:
+    + document.body - The body of full document
+    + document.documentElement - The full document 
+
+*** document.body 
+- Represents the <body> element
+- Refers only to the content area of the page 
+- Contains everything visible to the user:
+    + Text
+    + Images
+    + Buttons
+    + Forms
+    + Scripts rendered on the page 
+- Common uses:
+    + Manipulating page content
+    + Changing background color
+    + Adding event listeners
+
+*** document.documentElement 
+- Represents the <html> element (the root of the document)
+- Refers to the entire document
+- Contains:
+    + <head>
+    + <body> 
+- Common uses:
+    + Getting full page dimensions 
+    + Handling scrolling
+    + Working with CSS variables 
+
+3. The nodeName Property 
+- The nodeName property specifies the name of a node:
+    + nodeName is read-only 
+    + nodeName of an element node is the same as the tag name
+    + nodeName of an attribute node is the attribute name
+    + nodeName of a text node is always #text 
+    + nodeName of the document node is always #document 
+
+4. The nodeValue Property
+- The nodeValue property specifies the value of a node:
+    + nodeValue for element nodes is null 
+    + nodeValue for text nodes is the text itself 
+    + nodeValue for attribute node is the attribute value
+
+5. The nodeType Property
+- The nodeType property is read only. It returns the type of a node 
+
+------------------------------------------------
+JavaSCript HTML DOM Elements (Nodes)
+
+
